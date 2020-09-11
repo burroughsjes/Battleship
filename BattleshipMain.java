@@ -35,8 +35,11 @@ public class BattleshipMain {
         System.out.println();
         
         //starting game
+        // code incomplete to play game
         //playGame();
     }
+
+    // sets up what the battleship board looks like for the player 
     public static void setUpGamePlayer() {
         String orientation; 
         int xCoord;
@@ -51,6 +54,7 @@ public class BattleshipMain {
         System.out.print("Position ships randomly (r) or manually (m): ");
         String choice = scan.next();
         
+        // randomly places ships
         if (choice.equalsIgnoreCase("r"))  {
             System.out.println("Outcome: ");
             for (int i = 0; i < fleet.length; i++) {
@@ -63,9 +67,10 @@ public class BattleshipMain {
                     placeShipVertRand(gameBoardPlayer, fleet[i], symbols[i]);
                 }
             }
-            //display after all ships are randomly placed
+            // display after all ships are randomly placed
             displayBoard(gameBoardPlayer);
         }
+        // player chooses location for each ship
         else {
             for (int i = 0; i < fleet.length; i++) {
                 System.out.println();
@@ -92,6 +97,9 @@ public class BattleshipMain {
         System.out.print("\nComplete!! Now the computer is setting up . . .");
         
     }
+
+    // sets up what the battleship board looks like for the player 
+    // randomly placed ships
     public static void setUpGameComp() {
         for (int i = 0; i < fleet.length; i++) {
             int random = (int)(Math.random() * 10);
@@ -108,6 +116,8 @@ public class BattleshipMain {
         //displayBoard(gameBoardComp);
         
     }
+
+    // creates a 10 x 10 board of out of asterisks
     public static String[][] createBoard() {
         final int ROW_LENGTH = 10;
         final int COL_LENGTH = 10;
@@ -120,6 +130,7 @@ public class BattleshipMain {
         return board;
     }
     
+    // prints out 10 x 10 board
     public static void displayBoard(String[][] board) {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
@@ -129,6 +140,7 @@ public class BattleshipMain {
         }
     }
     
+    // Given ship is randomly placed with horizontal orientation on given board and represented by given symbol
     public static void placeShipHorzRand(String[][] board, Ship ship, String symbol) {
         int indexR = (int)(Math.random() * board.length);
         int indexC = (int)(Math.random() * (board[0].length - (ship.getLength() - 1)));
@@ -146,6 +158,8 @@ public class BattleshipMain {
         } 
     }
     
+    // Given ship is manually placed with horizontal orientation on given board and represented by given symbol
+    // Position of ship determined by a given x and y coordinate
     public static void placeShipHorzMan(String[][] board, Ship ship, String symbol, int x, int y) {
         int indexC = x; //limited to length - 1
         while (indexC >= board[0].length - (ship.getLength() - 1) || indexC < 0) {
@@ -178,6 +192,7 @@ public class BattleshipMain {
         } 
     }
     
+    // Given ship is randomly placed with vertical orientation on given board and represented by given symbol
     public static void placeShipVertRand(String[][] board, Ship ship, String symbol) {
         int indexR = (int)(Math.random() * (board.length - (ship.getLength() - 1)));
         int indexC = (int)(Math.random() * board[0].length);
@@ -195,6 +210,8 @@ public class BattleshipMain {
         } 
     }
     
+    // Given ship is manually placed with vertical orientation on given board and represented by given symbol
+    // Position of ship determined by a given x and y coordinate
     public static void placeShipVertMan(String[][] board, Ship ship, String symbol, int x, int y) {
         int indexC = x; //limited to length - 1
         while (indexC >= board[0].length || indexC < 0) {
@@ -227,7 +244,8 @@ public class BattleshipMain {
         
     }
         
-     
+    // Executes commands to play a game of battleship
+    // code incomplete
     public static void playGame() {
         System.out.println("Welcome to the game of Battleship against the computer!");
         System.out.println("Please press ENTER to start.");
